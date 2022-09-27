@@ -1,33 +1,56 @@
 package com.saloni.videoPlayer
 
 import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
+
 import android.content.pm.PackageManager
+
 import android.net.Uri
+
 import android.os.Bundle
 import android.provider.MediaStore
+
 import android.view.MenuItem
+import android.widget.TextView
+
 import android.widget.Toast
+import android.widget.VideoView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import com.saloni.videoPlayer.PlayerActivity.Companion.playerList
 import com.saloni.videoPlayer.databinding.ActivityMainBinding
 import java.io.File
 import kotlin.system.exitProcess
+import android.view.animation.Animation as Animation1
 
+@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
+
+   // lateinit var textView: TextView
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var toggle: ActionBarDrawerToggle
 
+
+
     companion object{
         lateinit var videoList: ArrayList<Video>
         lateinit var folderList:ArrayList<Folder>
+
+
     }
 
+    @SuppressLint("ObsoleteSdkInt", "ObjectAnimatorBinding")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+      //   textView=findViewById(R.id.txtHello)
+
+
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setTheme(R.style.coolPinkNav)
         setContentView(binding.root)
@@ -50,9 +73,6 @@ class MainActivity : AppCompatActivity() {
         }
         binding.navView.setNavigationItemSelectedListener {
             when(it.itemId){
-                R.id.feedbackNav -> Toast.makeText(this, "Feedback", Toast.LENGTH_SHORT).show()
-                R.id.themesNav -> Toast.makeText(this, "Themes", Toast.LENGTH_SHORT).show()
-                R.id.sortNav-> Toast.makeText(this, "Sort Order", Toast.LENGTH_SHORT).show()
                 R.id.aboutNav -> Toast.makeText(this, "About", Toast.LENGTH_SHORT).show()
                 R.id.exitNav -> exitProcess(1)
             }
@@ -133,4 +153,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+
+
 }
+

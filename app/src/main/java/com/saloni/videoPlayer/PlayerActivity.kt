@@ -5,6 +5,7 @@ package com.saloni.videoPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.animation.AnimationUtils
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.saloni.videoPlayer.databinding.ActivityPlayerBinding
@@ -23,6 +24,7 @@ class PlayerActivity : AppCompatActivity() {
         binding=ActivityPlayerBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initializeLayout()
+        binding.playerView.startAnimation(AnimationUtils.loadAnimation(binding.playerView.context,R.anim.move))
     }
     private fun initializeLayout(){
         when(intent.getStringExtra("class")){

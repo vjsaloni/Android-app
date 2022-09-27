@@ -5,6 +5,7 @@ import android.content.Intent
 import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -33,6 +34,7 @@ class VideoAdapter(private val context: Context, private var videoList: ArrayLis
             .load(videoList[position].artUri)
             .apply(RequestOptions().placeholder(R.mipmap.ic_video_player).centerCrop())
             .into(holder.image)
+
         holder.root.setOnClickListener {
             when{
                 isFolder->{
@@ -43,6 +45,7 @@ class VideoAdapter(private val context: Context, private var videoList: ArrayLis
                 }
             }
         }
+        holder.root.startAnimation(AnimationUtils.loadAnimation(holder.root.context,R.anim.move))
     }
 
     override fun getItemCount(): Int {
