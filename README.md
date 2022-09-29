@@ -6,5 +6,5 @@ Screenshots of the app are:
 ![Screenshot_20220929-151411](https://user-images.githubusercontent.com/94820200/193000461-8430fe20-817c-45d3-aec5-11019ade15b3.jpg)
 ![Screenshot_20220929-151429](https://user-images.githubusercontent.co
 ![Screenshot_20220929-151504](https://user-images.githubusercontent.com/94820200/193000545-c837ddff-221f-44c8-ab63-863727e9c99d.jpg)
-m/94820200/193000507-aa15e666-4cb5-46a7-b4c1-12455c3cc852.jpg)
+
 
