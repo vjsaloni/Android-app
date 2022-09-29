@@ -1,4 +1,4 @@
-Video Player
+Title: Video Player
 
 Video Player is a well-designed application for android in which you can play videos in animations.
 
@@ -13,15 +13,20 @@ Screenshots of the app are:
 Gradle:
 
 dependencies{
+   
     implementation 'com.github.bumptech.glide:glide:4.13.2'
+   
     implementation 'com.google.android.exoplayer:exoplayer-core:2.18.1'
+    
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.18.1'
     }
 
 How to use Video Player
 
 Permission
+
 The library requires permissions as:
+     
      android.permission.WRITE_EXTERNAL_STORAGE
 
 
