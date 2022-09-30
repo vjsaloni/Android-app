@@ -28,19 +28,7 @@ class MainActivity : AppCompatActivity() {
         lateinit var videoList: ArrayList<Video>
         lateinit var folderList: ArrayList<Folder>
     }
-
-    class VideoPickerActivity(val columnIndex: Int) : FragmentActivity() {
-
-
-        private var TAG = "VideoPickerActivity"
-
-        private var SELECT_VIDEO = 1
-
-        private lateinit var selectedVideos: List<String>
-
-
-
-        // lateinit var textView: TextView
+       // lateinit var textView: TextView
 
         private lateinit var binding: ActivityMainBinding
         private lateinit var toggle: ActionBarDrawerToggle
@@ -194,66 +182,6 @@ class MainActivity : AppCompatActivity() {
             cursor?.close()
             return tempList
         }
-
-        override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-            super.onActivityResult(requestCode, resultCode, data)
-            if (resultCode == RESULT_OK) {
-                if (requestCode == SELECT_VIDEO) {
-                    selectedVideos = getSelectedVideos(data) as List<String>
-                }
-            }
-            finish()
-        }
-
-        private fun getSelectedVideos(data: Intent?): List<String?> {
-            val result: MutableList<String?> = ArrayList()
-            val filePathColumn = arrayOf(MediaStore.Video.Media.DATA)
-
-            // Single video selected
-            if (data?.data != null) {
-                val mImageUri = data.data
-
-                // Get the cursor
-                val cursor: Cursor? = contentResolver.query(
-                    mImageUri!!,
-                    filePathColumn, null, null, null
-                )
-                // Move to first row
-                cursor?.moveToFirst()
-                val columnIndex: Int? = cursor?.getColumnIndex(filePathColumn[0])
-                val videoPath: String? = columnIndex?.let { cursor?.getString(it) }
-                if (videoPath == null) Log.e(TAG, "videoPath is null")
-                result.add(videoPath)
-                cursor?.close()
-            } else {
-                val mClipData = data?.clipData
-                if (mClipData != null) {
-                    for (i in 0 until mClipData.itemCount) {
-                        val item = mClipData.getItemAt(i)
-                        val uri = item.uri
-                        // Get the cursor
-                        val cursor: Cursor? =
-                            contentResolver.query(uri, filePathColumn, null, null, null)
-                        // Move to first row
-                        if (cursor == null) Log.e(TAG, "cursor is null") else {
-                            if (cursor.moveToFirst()) {
-                                val columnIndex: Int =
-                                    cursor.getColumnIndex(MediaStore.Video.Media.DATA)
-                                val videoPath: String = cursor.getString(columnIndex)
-                                if (videoPath == null) Log.e(TAG, "videoPath is null")
-                                result.add(videoPath)
-                            } else {
-                                Log.e(TAG, "cannot use cursor")
-                            }
-                            cursor.close()
-                        }
-                    }
-                }
-            }
-            return result
-        }
-    }
-
 
 
 
